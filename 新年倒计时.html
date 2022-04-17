@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新年倒计时</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html,body{
+			height: 100%;
+		}
+		.bg{
+			height: 100%;
+			background-image: url(http://api.btstu.cn/sjbz/?m_lx=suiji);
+			background-size: cover;
+			background-position: center center;
+		}
+		.shadow{
+			height: 100%;
+			background-color: rgba(0,0,0,0.5);
+			overflow: hidden;
+		}
+		p{
+			height: 40px;
+			line-height: 40px;
+			font-size: 36px;
+			color: white;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<div class="bg">
+	<div class="shadow">
+		<p style="margin-top: 200px;">新年倒计时</p>
+		<p style=" margin-top: 30px;">
+		<span id="day">0</span>天
+		<span id="hour">0</span>小时
+		<span id="minute">0</span>分钟
+		<span id="second">0</span>秒
+		</p>
+	</div>
+</div>
+	
+</body>
+<script>
+//获取全局变量
+var spanDay= document.getElementById("day");
+var spanHour= document.getElementById("hour");
+var spanMinute= document.getElementById("minute");
+var spanSecond= document.getElementById("second");
+var timer=null;
+
+var date1=new Date();
+var date2=new Date();
+timer=setInterval(function(){
+	var date1=new Date();
+	var date2=new Date("2023-1-1 00:00:00");
+	var n=date2.getTime()-date1.getTime();//毫秒
+	n/=1000;//秒
+	var day=n/(60*60*24);
+	spanDay.innerHTML=parseInt(day);
+
+	n%=(60*60*24);
+	var hour=n/(60*60);
+	spanHour.innerHTML=parseInt(hour);
+
+	n%=(60*60);
+	var minute=n/60;
+	spanMinute.innerHTML=parseInt(minute);
+
+	n%=60;
+	spanSecond.innerHTML=parseInt(n);
+},1000);
+</script>
+</html>
